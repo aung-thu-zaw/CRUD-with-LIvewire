@@ -20,7 +20,7 @@ class Blog extends Model
     protected function thumbnail(): Attribute
     {
         return Attribute::make(
-            set: fn ($value) => str_starts_with($value, "http") ? $value : asset("storage/blogs/$value"),
+            set: fn ($value) => str_starts_with($value, 'http') ? $value : asset("storage/blogs/$value"),
         );
     }
 }

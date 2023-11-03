@@ -3,11 +3,12 @@
 namespace App\Livewire;
 
 use App\Livewire\Forms\BlogForm;
+use App\Models\Blog;
 use App\Models\Category;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 
-class BlogCreate extends Component
+class BlogEdit extends Component
 {
     use WithFileUploads;
 
@@ -15,14 +16,15 @@ class BlogCreate extends Component
 
     public $categories;
 
-    public function mount(): void
+    public function mount(Blog $blog): void
     {
+        $this->form->setBlog($blog);
         $this->categories = Category::pluck('name', 'id');
     }
 
     public function save(): void
     {
-        $this->form->save();
+        $this->form->update();
 
         $this->redirect('/blogs');
     }

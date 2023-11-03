@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('blogs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained();
-            $table->string('thumbnail');
+            $table->string('thumbnail')->nullable();
             $table->string('title')->unique();
             $table->text('content');
             $table->enum('status', ['draft', 'published'])->default('draft');
