@@ -38,4 +38,9 @@ class Blogs extends Component
 
         return view('livewire.blogs', compact('blogs'));
     }
+
+    public function deleteBlog($blogId)
+    {
+        Blog::find($blogId)->delete();
+    }
 }

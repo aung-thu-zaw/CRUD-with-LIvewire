@@ -8,4 +8,9 @@ class BlogController extends Controller
     {
         return view('blogs.index');
     }
+
+    public function create()
+    {
+        return view('blogs.create');
+    }
 }

@@ -3,6 +3,9 @@
 
 
         <div class="flex items-center justify-between pb-4">
+            <a wire:navigate href="{{ route('blogs.create') }}"
+                class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">Add
+                New Blog</a>
             <div>
                 <button id="dropdownRadioButton" data-dropdown-toggle="dropdownRadio"
                     class="inline-flex items-center text-gray-500 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-3 py-1.5 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
@@ -154,7 +157,7 @@
                     class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
                     <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <img src="{{ $blog->thumbnail }}"
+                        <img src="{{ asset($blog->thumbnail) }}"
                             class="w-20 object-cover ring-2 ring-slate-100 border border-slate-300 shadow rounded-sm"
                             alt="">
                     </th>
@@ -186,7 +189,9 @@
                     <td class="px-6 py-4">
                         <div class="flex items-center space-x-3">
                             <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                            <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</a>
+                            <button wire:click="deleteBlog({{ $blog->id }})"
+                                wire:confirm="Are you sure you want to delete this blog?"
+                                class="font-medium text-red-600 dark:text-red-500 hover:underline">Delete</button>
                         </div>
                     </td>
                 </tr>
