@@ -15,6 +15,7 @@ return new class () extends Migration {
             $table->string("thumbnail");
             $table->string("title")->unique();
             $table->text("content");
+            $table->enum("status",["draft","published"])->default("draft");
             $table->timestamps();
         });
     }
